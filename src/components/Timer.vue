@@ -9,15 +9,15 @@
 <script setup lang="ts" >
 
 
-import { ref, Ref, watch, computed } from 'vue'
+import { ref, watch, computed } from 'vue'
 
 const props = defineProps({
     duration: Number
 })
 
 const emit = defineEmits(['getDateInterval'])
-const timer: Ref<number> = ref(0)
-const interval: Ref<number> = ref(0)
+const timer = ref<number>(0)
+const interval = ref<number>()
 const container = ref<HTMLElement>()
 
 let dateInterval = {
@@ -56,7 +56,7 @@ const endTimer = () => {
     console.log('je termine')
     if (interval.value) clearInterval(interval.value)
     dateInterval.endDate = Date.now()
-    interval.value = 0
+    interval.value = undefined
     emit('getDateInterval',dateInterval)
 }
 
