@@ -161,16 +161,19 @@ import Timer from './Timer.vue';
 
     <div class="timer">
         <!-- @getDateInterval="getDateIntervale" -->
-        <Timer ref="TimerComponent" :duration=60 />
+        <Timer ref="TimerComponent" :duration=2 />
     </div>
     <div class="trainer">
-        <p v-if="isLoading">Loading . . . </p>
-        <p v-else-if="wordTab.length > 0">{{ wordTab.length }} chargés !</p>
-        <p>
-            <span class="done">{{ Words.done  }}</span>
-            <span v-if="Words.error" class="error">{{ Words.error }}</span>
-            <span class="">{{ Words.todo }}</span></p>
-        <p>{{ input }}</p>
+        <div>
+
+            <p v-if="isLoading">Loading . . . </p>
+            <p v-else-if="wordTab.length > 0">{{ wordTab.length }} chargés !</p>
+            <p>
+                <span class="done">{{ Words.done  }}</span>
+                <span v-if="Words.error" class="error">{{ Words.error }}</span>
+                <span class="">{{ Words.todo }}</span>
+            </p>
+        </div>
         <div>
             <input type="button" @click="(TimerComponent) ? TimerComponent.startTimer() : ''" value="start">
             <input type="text"  placeholder="saisie ici !" v-model="input">
